@@ -10,6 +10,7 @@ export default styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 15px;
+  min-width: 250px;
   .logo-container {
     flex: 1;
   }
