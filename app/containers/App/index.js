@@ -14,6 +14,7 @@ import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
+import SideNav from 'components/SideNav';
 import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
@@ -31,12 +32,13 @@ export default function App() {
   return (
     <AppWrapper>
       <Header />
+      <SideNav />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
       <GlobalStyle />
     </AppWrapper>
   );
