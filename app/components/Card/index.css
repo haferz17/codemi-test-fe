@@ -1,0 +1,23 @@
+.card-container {
+    padding: 10px 7px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.card-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+    height: 40px;
+}
+.card-content {
+    background-color: #fff;
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.2);
+}
+.title-card {
+    margin: 0;
+    font-size: 17.5px;
+    font-family: sans-serif;
+    color: #444;
+}

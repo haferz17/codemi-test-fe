@@ -1,0 +1,15 @@
+.home-container {
+    flex: 1;
+    background-color: #eee;
+    margin-top: 2px;
+}
+.content-container {
+    flex: 1;
+    padding: 25px;
+}
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}

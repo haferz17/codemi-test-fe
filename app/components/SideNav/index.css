@@ -2,9 +2,10 @@
     width: 17vw;
     min-width: 200px;
     display: flex;
-    box-shadow: 2px 0px rgba(0,0,0,0.2);
+    box-shadow: 2px 0 rgba(0,0,0,0.2);
     flex-direction: column;
     justify-content: flex-start;
     padding: 2vh 0;
     transition: 350ms;
+    z-index: 1;
 }

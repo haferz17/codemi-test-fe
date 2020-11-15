@@ -26,17 +26,23 @@ const AppWrapper = styled.div`
   padding: 0;
   flex-direction: column;
 `;
+const SideNavWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 export default function App() {
   return (
     <AppWrapper>
       <Header />
-      <SideNav />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
-        <Route path="" component={NotFoundPage} />
-      </Switch>
+      <SideNavWrapper>
+        <SideNav />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/features" component={FeaturePage} />
+          <Route path="" component={NotFoundPage} />
+        </Switch>
+      </SideNavWrapper>
       <GlobalStyle />
     </AppWrapper>
   );
