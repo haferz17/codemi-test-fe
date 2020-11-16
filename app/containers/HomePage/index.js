@@ -17,8 +17,9 @@ import {
   makeSelectRepos,
   makeSelectLoading,
   makeSelectError,
+  makeSelectActive
 } from 'containers/App/selectors';
-import { loadRepos } from '../App/actions';
+import { loadRepos, fetchActiveData } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
@@ -29,47 +30,6 @@ import BarChart from '../../components/BarChart';
 import Table from '../../components/Table';
 
 const key = 'home';
-const barData = [
-  { id: 1, percent: '50%' },
-  { id: 2, percent: '53%' },
-  { id: 3, percent: '55%' },
-  { id: 4, percent: '53%' },
-  { id: 5, percent: '60%' },
-  { id: 6, percent: '70%' },
-  { id: 7, percent: '80%' },
-  { id: 8, percent: '75%' },
-  { id: 9, percent: '77%' },
-  { id: 10, percent: '57%' },
-  { id: 11, percent: '65%' },
-  { id: 12, percent: '40%' },
-  { id: 13, percent: '45%' },
-  { id: 14, percent: '90%' },
-  { id: 15, percent: '35%' },
-  { id: 16, percent: '47%' },
-  { id: 17, percent: '73%' },
-  { id: 18, percent: '50%' },
-  { id: 19, percent: '63%' },
-  { id: 20, percent: '37%' },
-  { id: 21, percent: '40%' },
-  { id: 22, percent: '53%' },
-  { id: 23, percent: '50%' },
-  { id: 24, percent: '87%' },
-  { id: 25, percent: '80%' },
-  { id: 26, percent: '85%' },
-  { id: 27, percent: '77%' },
-  { id: 28, percent: '73%' },
-  { id: 29, percent: '70%' },
-  { id: 30, percent: '100%' },
-];
-
-const tableData = [
-  { id: 0, key: 'Top Active Pages', value: 'Active Users' },
-  { id: 1, key: '/#/', value: 65 },
-  { id: 2, key: '/#/learner/my_course', value: 45 },
-  { id: 3, key: '/#/learner/course/soajd8a9sd9a8sd9adasdhas', value: 23 },
-  { id: 4, key: '/#/learner/course/d7a8s6dat6sdnadda9sdda9a', value: 23 },
-  { id: 5, key: '/#/learner/course/b89df787asdg909af0s9dg7g', value: 21 },
-];
 
 export function HomePage({
   username,
@@ -78,13 +38,16 @@ export function HomePage({
   repos,
   onSubmitForm,
   onChangeUsername,
+  fetchData,
+  active
 }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
   useEffect(() => {
     // When initial state username is not null, submit the form to load repos
-    if (username && username.trim().length > 0) onSubmitForm();
+    // if (username && username.trim().length > 0) onSubmitForm();
+    fetchData()
   }, []);
 
   const reposListProps = {
@@ -92,7 +55,8 @@ export function HomePage({
     error,
     repos,
   };
-
+  console.log("data", active)
+  const tableData = active.data.slice(0, 5)
   return (
     <div className="home-container">
       <Helmet>
@@ -105,7 +69,7 @@ export function HomePage({
       <div className="content-container">
         <div className="content">
           <Card style={{ width: '70%' }} title="Codemi Home">
-            <div style={{ height: 465 }} />
+            <div style={{ height: 442 }} />
           </Card>
           <Card
             style={{ width: '30%', backgroundColor: '#2979ff' }}
@@ -113,16 +77,21 @@ export function HomePage({
           >
             <div className="active-users">
               <p className="page-summary-font title-active">
-                Active Users right now
+                Confirmed
               </p>
-              <p className="page-summary-font value-active">479</p>
+              <p className="page-summary-font value-active">{active.total}</p>
             </div>
             <div className="page-views">
               <p className="page-summary-font title-view">
-                Page views per minute
+                Confirmed per province
               </p>
-              <BarChart data={barData} />
-              <Table data={tableData} />
+              <BarChart data={active.data} />
+              <Table
+                data={[
+                  { uid: 0, province: 'Province', confirmed: 'Confirmed' },
+                  ...tableData
+                ]}
+              />
             </div>
           </Card>
           <Card
@@ -153,6 +122,8 @@ HomePage.propTypes = {
   onSubmitForm: PropTypes.func,
   username: PropTypes.string,
   onChangeUsername: PropTypes.func,
+  fetchData: PropTypes.func,
+  active: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -160,6 +131,7 @@ const mapStateToProps = createStructuredSelector({
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
+  active: makeSelectActive()
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -169,6 +141,7 @@ export function mapDispatchToProps(dispatch) {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(loadRepos());
     },
+    fetchData: () => dispatch(fetchActiveData())
   };
 }
 

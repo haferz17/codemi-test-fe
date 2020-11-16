@@ -12,3 +12,6 @@
 export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
 export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
 export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
+export const FETCH_ACTIVE_DATA = 'FETCH_ACTIVE_DATA';
+export const FETCH_ACTIVE_DATA_SUCCESS = 'FETCH_ACTIVE_DATA_SUCCESS';
+export const FETCH_ACTIVE_DATA_ERROR = 'FETCH_ACTIVE_DATA_ERROR';

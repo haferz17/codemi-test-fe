@@ -15,7 +15,7 @@
  *    }
  */
 
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
+import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR, FETCH_ACTIVE_DATA } from './constants';
 
 /**
  * Load the repositories, this action starts the request saga
@@ -25,6 +25,12 @@ import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
 export function loadRepos() {
   return {
     type: LOAD_REPOS,
+  };
+}
+
+export function fetchActiveData() {
+  return {
+    type: FETCH_ACTIVE_DATA,
   };
 }
 

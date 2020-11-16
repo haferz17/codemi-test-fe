@@ -8,7 +8,14 @@
  */
 
 import produce from 'immer';
-import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
+import {
+  LOAD_REPOS_SUCCESS,
+  LOAD_REPOS,
+  LOAD_REPOS_ERROR,
+  FETCH_ACTIVE_DATA,
+  FETCH_ACTIVE_DATA_SUCCESS,
+  FETCH_ACTIVE_DATA_ERROR
+} from './constants';
 
 // The initial state of the App
 export const initialState = {
@@ -18,6 +25,7 @@ export const initialState = {
   userData: {
     repositories: false,
   },
+  data: {}
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -40,6 +48,25 @@ const appReducer = (state = initialState, action) =>
         draft.error = action.error;
         draft.loading = false;
         break;
+
+      case FETCH_ACTIVE_DATA:
+        return {
+          ...state,
+          loading: true,
+          error: false
+        }
+      case FETCH_ACTIVE_DATA_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          data: action.data
+        }
+      case FETCH_ACTIVE_DATA_ERROR:
+        return {
+          ...state,
+          loading: false,
+          error: true
+        }
     }
   });
 

@@ -6,15 +6,15 @@ function Table({ data = [] }) {
   return (
     <div className="table-container">
       {data.map((item, index) => {
-        const { id, key, value } = item;
+        const { uid, province, confirmed } = item;
         return (
           <div
-            key={id}
+            key={uid}
             className="table-row"
             style={{ borderBottomWidth: index === data.length - 1 ? 0 : null }}
           >
-            <p className="table-data key">{key}</p>
-            <p className="table-data value">{value}</p>
+            <p className="table-data key">{province}</p>
+            <p className="table-data value">{confirmed}</p>
           </div>
         );
       })}

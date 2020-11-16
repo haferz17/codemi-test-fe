@@ -6,9 +6,9 @@ function BarChart({ data = [] }) {
   return (
     <div className="chart-container">
       {data.map(item => {
-        const { id, percent } = item;
+        const { uid, percentage } = item;
         return (
-          <div key={id} className="bar" style={{ height: percent }}>
+          <div key={uid} className="bar" style={{ height: percentage }}>
             <div className="top-bar" />
             <div className="bottom-bar" />
           </div>
