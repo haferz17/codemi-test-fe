@@ -1,0 +1,19 @@
+.chart-container {
+    height: 90px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    align-items: flex-end;
+}
+.bar {
+    margin-right: 1px;
+    flex: 1;
+}
+.top-bar {
+    background-color: #fff;
+    height: 2px;
+}
+.bottom-bar {
+    background-color: #bbdefb;
+    height: 100%;
+    margin-top: 2px;
+}

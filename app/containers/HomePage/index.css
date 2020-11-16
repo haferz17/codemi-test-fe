@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 .home-container {
     flex: 1;
     background-color: #eee;
@@ -11,5 +13,23 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
+}
+.active-users {
+}
+.page-summary-font {
+    color: #eee;
+    margin: 0;
+    font-family: 'Roboto';
+}
+.title-active {
+    font-size: 15px;
+}
+.value-active {
+    font-size: 50px;
+}
+.page-views {
+}
+.title-view {
+    font-size: 11.5px;
+    margin-bottom: 2px;
 }

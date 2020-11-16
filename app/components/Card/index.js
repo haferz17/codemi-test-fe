@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import './index.css';
 
 function Card({ children, title, style = {} }) {
+  const { width, backgroundColor } = style
   return (
-    <div className="card-container" style={{ width: style.width }}>
+    <div className="card-container" style={{ width }}>
       <div className="card-title">
         {title && <p className="title-card">{title}</p>}
       </div>
-      <div className="card-content">{children}</div>
+      <div className="card-content" style={{ backgroundColor }}>{children}</div>
     </div>
   );
 }
