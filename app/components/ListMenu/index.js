@@ -6,7 +6,7 @@ import './index.css';
 function ListMenu({
   title,
   id,
-  to = "/",
+  to = '/',
   list = [],
   borderTop = true,
   activeLink,

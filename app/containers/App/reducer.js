@@ -14,7 +14,7 @@ import {
   LOAD_REPOS_ERROR,
   FETCH_ACTIVE_DATA,
   FETCH_ACTIVE_DATA_SUCCESS,
-  FETCH_ACTIVE_DATA_ERROR
+  FETCH_ACTIVE_DATA_ERROR,
 } from './constants';
 
 // The initial state of the App
@@ -25,7 +25,7 @@ export const initialState = {
   userData: {
     repositories: false,
   },
-  data: null
+  data: null,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -53,20 +53,20 @@ const appReducer = (state = initialState, action) =>
         return {
           ...state,
           loading: true,
-          error: false
-        }
+          error: false,
+        };
       case FETCH_ACTIVE_DATA_SUCCESS:
         return {
           ...state,
           loading: false,
-          data: action.data
-        }
+          data: action.data,
+        };
       case FETCH_ACTIVE_DATA_ERROR:
         return {
           ...state,
           loading: false,
-          error: true
-        }
+          error: true,
+        };
     }
   });
 

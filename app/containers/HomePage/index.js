@@ -17,7 +17,7 @@ import {
   makeSelectRepos,
   makeSelectLoading,
   makeSelectError,
-  makeSelectActive
+  makeSelectActive,
 } from 'containers/App/selectors';
 import { loadRepos, fetchActiveData } from '../App/actions';
 import { changeUsername } from './actions';
@@ -39,7 +39,7 @@ export function HomePage({
   onSubmitForm,
   onChangeUsername,
   fetchData,
-  active
+  active,
 }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
@@ -47,7 +47,7 @@ export function HomePage({
   useEffect(() => {
     // When initial state username is not null, submit the form to load repos
     // if (username && username.trim().length > 0) onSubmitForm();
-    fetchData()
+    fetchData();
   }, []);
 
   const reposListProps = {
@@ -55,7 +55,7 @@ export function HomePage({
     error,
     repos,
   };
-  const tableData = active ? active.data.slice(0, 5) : []
+  const tableData = active ? active.data.slice(0, 5) : [];
   return (
     <div className="home-container">
       <Helmet>
@@ -75,10 +75,10 @@ export function HomePage({
             footer="REAL-TIME REPORT"
           >
             <div className="active-users">
-              <p className="page-summary-font title-active">
-                Confirmed
+              <p className="page-summary-font title-active">Confirmed</p>
+              <p className="page-summary-font value-active">
+                {active && active.total}
               </p>
-              <p className="page-summary-font value-active">{active && active.total}</p>
             </div>
             <div className="page-views">
               <p className="page-summary-font title-view">
@@ -88,7 +88,7 @@ export function HomePage({
               <Table
                 data={[
                   { uid: 0, province: 'Province', confirmed: 'Confirmed' },
-                  ...tableData
+                  ...tableData,
                 ]}
               />
             </div>
@@ -130,7 +130,7 @@ const mapStateToProps = createStructuredSelector({
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
-  active: makeSelectActive()
+  active: makeSelectActive(),
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -140,7 +140,7 @@ export function mapDispatchToProps(dispatch) {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(loadRepos());
     },
-    fetchData: () => dispatch(fetchActiveData())
+    fetchData: () => dispatch(fetchActiveData()),
   };
 }
 

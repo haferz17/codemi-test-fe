@@ -3,7 +3,12 @@
  */
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
-import { LOAD_REPOS, FETCH_ACTIVE_DATA, FETCH_ACTIVE_DATA_SUCCESS, FETCH_ACTIVE_DATA_ERROR } from 'containers/App/constants';
+import {
+  LOAD_REPOS,
+  FETCH_ACTIVE_DATA,
+  FETCH_ACTIVE_DATA_SUCCESS,
+  FETCH_ACTIVE_DATA_ERROR,
+} from 'containers/App/constants';
 import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
@@ -35,27 +40,29 @@ export function* getActiveData() {
     // Call our request helper (see 'utils/request')
     const resTotal = yield fetch(reqTotal).then(res => {
       if (res.status === 200) {
-        return res.json()
+        return res.json();
       }
-    })
+    });
     const resDetail = yield fetch(reqDetail).then(res => {
       if (res.status === 200) {
-        return res.json()
+        return res.json();
       }
-    })
+    });
     const detail = resDetail.slice(0, 20).map(item => {
-      const percentage = Math.round(item.confirmed / resTotal.confirmed.value * 100)
+      const percentage = Math.round(
+        (item.confirmed / resTotal.confirmed.value) * 100,
+      );
       return {
         uid: item.uid,
         province: item.provinceState,
         confirmed: item.confirmed,
-        percentage: `${percentage}%`
-      }
-    })
+        percentage: `${percentage}%`,
+      };
+    });
     const data = {
       total: resTotal.confirmed.value,
-      data: detail
-    }
+      data: detail,
+    };
     yield put({ type: FETCH_ACTIVE_DATA_SUCCESS, data });
   } catch (err) {
     yield put({ type: FETCH_ACTIVE_DATA_ERROR });
