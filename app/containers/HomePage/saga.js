@@ -56,10 +56,8 @@ export function* getActiveData() {
       total: resTotal.confirmed.value,
       data: detail
     }
-    console.log("resss111", data)
     yield put({ type: FETCH_ACTIVE_DATA_SUCCESS, data });
   } catch (err) {
-    console.log("error", err)
     yield put({ type: FETCH_ACTIVE_DATA_ERROR });
   }
 }

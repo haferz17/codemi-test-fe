@@ -55,8 +55,7 @@ export function HomePage({
     error,
     repos,
   };
-  console.log("data", active)
-  const tableData = active.data.slice(0, 5)
+  const tableData = active ? active.data.slice(0, 5) : []
   return (
     <div className="home-container">
       <Helmet>
@@ -79,13 +78,13 @@ export function HomePage({
               <p className="page-summary-font title-active">
                 Confirmed
               </p>
-              <p className="page-summary-font value-active">{active.total}</p>
+              <p className="page-summary-font value-active">{active && active.total}</p>
             </div>
             <div className="page-views">
               <p className="page-summary-font title-view">
                 Confirmed per province
               </p>
-              <BarChart data={active.data} />
+              <BarChart data={active ? active.data : []} />
               <Table
                 data={[
                   { uid: 0, province: 'Province', confirmed: 'Confirmed' },

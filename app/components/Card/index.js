@@ -15,7 +15,7 @@ function Card({ children, title, style = {}, footer }) {
         <div className="card-body">{children}</div>
         {footer && (
           <div className="card-footer">
-            <Link className="footer-link">
+            <Link to="/" className="footer-link">
               {footer}
               <IoIosArrowForward
                 size={17}
