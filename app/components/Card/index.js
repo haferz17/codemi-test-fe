@@ -12,16 +12,19 @@ function Card({ children, title, style = {}, footer }) {
         {title && <p className="title-card">{title}</p>}
       </div>
       <div className="card-content" style={{ backgroundColor }}>
-        <div className="card-body">
-          {children}
-        </div>
-        {footer && <div className="card-footer">
-          <Link className="footer-link">
-            {footer}
-            <IoIosArrowForward size={17} color="#fff" style={{ marginLeft: 5 }} />
-          </Link>
-        </div>
-        }
+        <div className="card-body">{children}</div>
+        {footer && (
+          <div className="card-footer">
+            <Link className="footer-link">
+              {footer}
+              <IoIosArrowForward
+                size={17}
+                color="#fff"
+                style={{ marginLeft: 5 }}
+              />
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

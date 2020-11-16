@@ -69,7 +69,7 @@ const tableData = [
   { id: 3, key: '/#/learner/course/soajd8a9sd9a8sd9adasdhas', value: 23 },
   { id: 4, key: '/#/learner/course/d7a8s6dat6sdnadda9sdda9a', value: 23 },
   { id: 5, key: '/#/learner/course/b89df787asdg909af0s9dg7g', value: 21 },
-]
+];
 
 export function HomePage({
   username,
@@ -107,7 +107,10 @@ export function HomePage({
           <Card style={{ width: '70%' }} title="Codemi Home">
             <div style={{ height: 465 }} />
           </Card>
-          <Card style={{ width: '30%', backgroundColor: '#2979ff' }} footer="REAL-TIME REPORT">
+          <Card
+            style={{ width: '30%', backgroundColor: '#2979ff' }}
+            footer="REAL-TIME REPORT"
+          >
             <div className="active-users">
               <p className="page-summary-font title-active">
                 Active Users right now
