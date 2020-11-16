@@ -26,6 +26,7 @@ import saga from './saga';
 import './index.css';
 import Card from '../../components/Card';
 import BarChart from '../../components/BarChart';
+import Table from '../../components/Table';
 
 const key = 'home';
 const barData = [
@@ -59,6 +60,15 @@ const barData = [
   { id: 28, percent: '73%' },
   { id: 29, percent: '70%' },
   { id: 30, percent: '100%' },
+];
+
+const tableData = [
+  { id: 0, key: 'Top Active Pages', value: 'Active Users' },
+  { id: 1, key: '/#/', value: 65 },
+  { id: 2, key: '/#/learner/my_course', value: 45 },
+  { id: 3, key: '/#/learner/course/soajd8a9sd9a8sd9adasdhas', value: 23 },
+  { id: 4, key: '/#/learner/course/d7a8s6dat6sdnadda9sdda9a', value: 23 },
+  { id: 5, key: '/#/learner/course/b89df787asdg909af0s9dg7g', value: 21 },
 ]
 
 export function HomePage({
@@ -95,16 +105,21 @@ export function HomePage({
       <div className="content-container">
         <div className="content">
           <Card style={{ width: '70%' }} title="Codemi Home">
-            <div style={{ height: 450 }} />
+            <div style={{ height: 465 }} />
           </Card>
-          <Card style={{ width: '30%', backgroundColor: '#2979ff' }}>
+          <Card style={{ width: '30%', backgroundColor: '#2979ff' }} footer="REAL-TIME REPORT">
             <div className="active-users">
-              <p className="page-summary-font title-active">Active Users right now</p>
+              <p className="page-summary-font title-active">
+                Active Users right now
+              </p>
               <p className="page-summary-font value-active">479</p>
             </div>
             <div className="page-views">
-              <p className="page-summary-font title-view">Page views per minute</p>
+              <p className="page-summary-font title-view">
+                Page views per minute
+              </p>
               <BarChart data={barData} />
+              <Table data={tableData} />
             </div>
           </Card>
           <Card

@@ -1,6 +1,6 @@
 .chart-container {
     height: 90px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #aaa;
     display: flex;
     align-items: flex-end;
 }

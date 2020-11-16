@@ -13,12 +13,28 @@
 }
 .title-card {
     margin: 0;
-    font-size: 17.5px;
+    font-size: 17px;
     font-family: sans-serif;
     color: #444;
 }
 .card-content {
     background-color: #fff;
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.2);
-    padding: 20px;
+}
+.card-body {
+    padding: 20px 20px 0 20px;
+}
+.card-footer {
+    padding: 8px 20px;
+    border-top: 1px solid #aaa;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.footer-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
 }
